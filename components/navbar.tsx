@@ -61,24 +61,32 @@ export function Navbar() {
               e.preventDefault();
               handleNavClick("#home");
             }}
-            className="text-xl font-semibold tracking-tight text-foreground hover:text-primary transition-colors cursor-pointer"
+            className="group flex items-center gap-2 cursor-pointer"
           >
-            <span className="text-primary">Portfolio</span>
+            <div className="w-8 h-8 border border-primary/60 flex items-center justify-center rotate-45 group-hover:border-primary transition-colors">
+              <span className="text-primary text-sm font-bold -rotate-45">
+                D
+              </span>
+            </div>
+            <span className="text-foreground font-medium tracking-wide group-hover:text-primary transition-colors hidden sm:block">
+              Portfolio
+            </span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Button
-                key={link.href}
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200"
-                onClick={() => handleNavClick(link.href)}
-              >
-                {link.icon}
-                <span className="ml-2">{link.label}</span>
-              </Button>
+          <div className="hidden md:flex items-center">
+            {navLinks.map((link, index) => (
+              <div key={link.href} className="flex items-center">
+                <button
+                  className="px-4 py-2 text-sm text-muted-foreground hover:text-primary transition-colors tracking-wide cursor-pointer"
+                  onClick={() => handleNavClick(link.href)}
+                >
+                  {link.label}
+                </button>
+                {index < navLinks.length - 1 && (
+                  <span className="h-4 w-px bg-border/50" />
+                )}
+              </div>
             ))}
           </div>
 
@@ -105,18 +113,16 @@ export function Navbar() {
             isMobileMenuOpen ? "max-h-64 pb-4" : "max-h-0",
           )}
         >
-          <div className="flex flex-col gap-1 pt-2">
+          <div className="flex flex-col gap-1 pt-2 border-t border-border/30 mt-2">
             {navLinks.map((link) => (
-              <Button
+              <button
                 key={link.href}
-                variant="ghost"
-                size="sm"
-                className="justify-start text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200"
+                className="flex items-center gap-3 px-3 py-2.5 text-muted-foreground hover:text-primary hover:bg-secondary/30 transition-all duration-200 cursor-pointer"
                 onClick={() => handleNavClick(link.href)}
               >
-                {link.icon}
-                <span className="ml-2">{link.label}</span>
-              </Button>
+                <span className="w-1.5 h-1.5 bg-primary/40 rotate-45" />
+                <span className="text-sm tracking-wide">{link.label}</span>
+              </button>
             ))}
           </div>
         </div>

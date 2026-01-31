@@ -70,47 +70,45 @@ function TimelineItem({
   isLast: boolean;
 }) {
   return (
-    <div className="relative flex gap-6">
-      {/* Timeline line */}
+    <div className="relative flex gap-5">
+      {/* Timeline line - bamboo inspired */}
       {!isLast && (
-        <div className="absolute left-[17px] top-10 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 to-border/30" />
+        <div className="absolute left-[11px] top-8 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/30 to-border/20" />
       )}
 
-      {/* Timeline dot */}
+      {/* Timeline dot - lantern style with graduation icon */}
       <div className="relative z-10 flex-shrink-0">
-        <div className="w-9 h-9 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center">
-          <GraduationCap className="h-4 w-4 text-primary" />
+        <div className="w-7 h-7 bg-primary/20 border border-primary/60 flex items-center justify-center rotate-45">
+          <GraduationCap className="w-3.5 h-3.5 text-primary -rotate-45" />
         </div>
       </div>
 
       {/* Content */}
-      <div className="pb-8 flex-1">
-        <div className="flex items-center gap-2 mb-1">
-          <Calendar className="h-3.5 w-3.5 text-primary" />
-          <span className="text-sm font-medium text-primary">
+      <div className="pb-8 flex-1 pt-0.5">
+        <div className="flex items-center gap-3 mb-2">
+          <span className="text-xs font-medium text-primary tracking-wider">
             {formation.period}
           </span>
           {formation.highlight && (
             <Badge
               variant="secondary"
-              className="bg-primary/10 text-primary border-primary/20 text-xs"
+              className="bg-primary/10 text-primary border-primary/30 text-[10px] uppercase tracking-wider rounded-none px-2"
             >
-              <Award className="h-3 w-3 mr-1" />
               {formation.highlight}
             </Badge>
           )}
         </div>
-        <h4 className="text-lg font-semibold text-foreground mb-1">
+        <h4 className="text-base font-semibold text-foreground mb-1">
           {formation.title}
         </h4>
-        <p className="text-sm text-muted-foreground mb-1">
+        <p className="text-xs text-muted-foreground mb-1">
           {formation.institution}, {formation.location}
         </p>
-        <p className="text-sm text-muted-foreground/80">
+        <p className="text-xs text-muted-foreground/70 leading-relaxed">
           {formation.description}
         </p>
         {formation.secondLine && (
-          <p className="text-sm text-muted-foreground/80 mt-1">
+          <p className="text-xs text-muted-foreground/70 mt-1 leading-relaxed">
             {formation.secondLine}
           </p>
         )}
@@ -127,67 +125,78 @@ interface InfoCardProps {
 
 function InfoCard({ icon, title, description }: InfoCardProps) {
   return (
-    <Card className="bg-card/50 border-border/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-      <CardContent className="p-6">
-        <div className="flex items-start gap-4">
-          <div className="p-2 rounded-lg bg-primary/10 text-primary">
-            {icon}
-          </div>
-          <div className="space-y-1">
-            <h3 className="font-semibold text-foreground">{title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {description}
-            </p>
-          </div>
+    <div className="group relative p-6 bg-card/30 border border-border/30 hover:border-primary/40 transition-all duration-500">
+      {/* Corner decorations */}
+      <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-primary/40 group-hover:border-primary/70 transition-colors" />
+      <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-primary/40 group-hover:border-primary/70 transition-colors" />
+
+      <div className="flex items-start gap-4">
+        <div className="p-2 bg-primary/10 text-primary">{icon}</div>
+        <div className="space-y-1">
+          <h3 className="font-medium text-foreground text-sm tracking-wide">
+            {title}
+          </h3>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            {description}
+          </p>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-secondary/20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <p className="text-primary text-sm font-medium tracking-wide uppercase mb-2">
-              À propos
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Qui suis-je ?
+    <section id="about" className="py-24 relative">
+      {/* Subtle background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-background to-background" />
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header - Asian style */}
+          <div className="text-center mb-20">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
+                À propos
+              </p>
+              <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-wide ink-stroke">
+              Mon parcours
             </h2>
-            <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
           </div>
 
           {/* Content */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Text Content */}
             <div className="space-y-6">
-              <p className="text-muted-foreground leading-relaxed">
-                Étudiant passionné en troisième année de BUT Informatique à
-                l&apos;IUT Robert Schuman (Illkirch-Graffenstaden), je suis à la
-                recherche d&apos;un stage en développement informatique pour
-                valider mon diplôme. Passionné par le développement web et
-                d&apos;application, je souhaite consolider mes compétences et
-                apprendre de nouvelles technologies.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Mon stage chez Viking Cruises à Bâle (Suisse) m&apos;a permis de
-                travailler dans un environnement international et agile, où
-                j&apos;ai développé une application interne avec les outils
-                Microsoft (PowerApps, Power BI, Azure DevOps). Cette expérience
-                a renforcé ma capacité d&apos;adaptation et mon autonomie.
-              </p>
+              <div className="relative pl-6 border-l border-primary/30">
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  Étudiant passionné en troisième année de BUT Informatique à
+                  l&apos;IUT Robert Schuman (Illkirch-Graffenstaden), je suis à
+                  la recherche d&apos;un stage en développement informatique
+                  pour valider mon diplôme.
+                </p>
+              </div>
+              <div className="relative pl-6 border-l border-border/30">
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  Mon stage chez Viking Cruises à Bâle (Suisse) m&apos;a permis
+                  de travailler dans un environnement international et agile, où
+                  j&apos;ai développé une application interne avec les outils
+                  Microsoft (PowerApps, Power BI, Azure DevOps).
+                </p>
+              </div>
             </div>
 
             {/* Formation Timeline */}
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
-                <GraduationCap className="h-5 w-5 text-primary" />
-                Parcours de formation
-              </h3>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-px bg-primary/60" />
+                <h3 className="text-sm font-medium text-foreground tracking-wider uppercase">
+                  Formation
+                </h3>
+              </div>
               <div className="space-y-0">
                 {formations.map((formation, index) => (
                   <TimelineItem
@@ -201,81 +210,73 @@ export function AboutSection() {
           </div>
 
           {/* Info Cards - Localisation & Objectif */}
-          <div className="grid sm:grid-cols-2 gap-4 mt-12">
+          <div className="grid sm:grid-cols-2 gap-6 mt-16">
             <InfoCard
-              icon={<MapPin className="h-5 w-5" />}
+              icon={<MapPin className="h-4 w-4" />}
               title="Localisation"
               description="Illkirch-Graffenstaden, France. Disponible pour un stage à partir de janvier 2026"
             />
             <InfoCard
-              icon={<Target className="h-5 w-5" />}
+              icon={<Target className="h-4 w-4" />}
               title="Objectif professionnel"
               description="Devenir développeur Full Stack et contribuer à des projets innovants et utiles dans un environnement international"
             />
           </div>
 
           {/* Centres d'intérêt */}
-          <div className="mt-16">
-            <h3 className="text-lg font-semibold text-foreground mb-6 text-center">
-              Centres d&apos;intérêt
-            </h3>
-            <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <Card className="bg-card/50 border-border/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                      <Dumbbell className="h-5 w-5" />
-                    </div>
-                    <p className="text-base font-semibold text-foreground">
-                      Sport
-                    </p>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Je pratique le basket-ball et le volley-ball à
-                    l&apos;université. Ces sports collectifs m&apos;apprennent
-                    le travail d&apos;équipe, la communication et la
-                    persévérance.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/50 border-border/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                      <Swords className="h-5 w-5" />
-                    </div>
-                    <p className="text-base font-semibold text-foreground">
-                      Arts martiaux
-                    </p>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Je pratique le kung-fu en club depuis plusieurs années. Cet
-                    art martial m&apos;enseigne la discipline, la maîtrise de
-                    soi et le respect des traditions.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/50 border-border/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                      <Pencil className="h-5 w-5" />
-                    </div>
-                    <p className="text-base font-semibold text-foreground">
-                      Dessin
-                    </p>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Le dessin est mon échappatoire créative. J&apos;aime
-                    explorer différents styles et techniques pendant mon temps
-                    libre, ce qui nourrit ma sensibilité au design.
-                  </p>
-                </CardContent>
-              </Card>
+          <div className="mt-20">
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <span className="h-px w-8 bg-gradient-to-r from-transparent to-primary/40" />
+              <h3 className="text-sm font-medium text-foreground tracking-wider uppercase">
+                Centres d&apos;intérêt
+              </h3>
+              <span className="h-px w-8 bg-gradient-to-l from-transparent to-primary/40" />
+            </div>
+            <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {/* Sport */}
+              <div className="group text-center">
+                <div className="w-14 h-14 mx-auto mb-4 bg-primary/10 border border-primary/30 flex items-center justify-center rotate-45 group-hover:bg-primary/20 transition-colors">
+                  <Dumbbell className="h-5 w-5 text-primary -rotate-45" />
+                </div>
+                <h4 className="text-sm font-medium text-foreground mb-2">
+                  Sport
+                </h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Basket-ball et volley-ball à l&apos;université. Ces sports
+                  collectifs m&apos;apprennent le travail d&apos;équipe et la
+                  persévérance.
+                </p>
+              </div>
+
+              {/* Arts martiaux */}
+              <div className="group text-center">
+                <div className="w-14 h-14 mx-auto mb-4 bg-primary/10 border border-primary/30 flex items-center justify-center rotate-45 group-hover:bg-primary/20 transition-colors">
+                  <Swords className="h-5 w-5 text-primary -rotate-45" />
+                </div>
+                <h4 className="text-sm font-medium text-foreground mb-2">
+                  Arts martiaux
+                </h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Pratique du kung-fu en club depuis plusieurs années.
+                  Discipline, maîtrise de soi et respect des traditions.
+                </p>
+              </div>
+
+              {/* Dessin */}
+              <div className="group text-center">
+                <div className="w-14 h-14 mx-auto mb-4 bg-primary/10 border border-primary/30 flex items-center justify-center rotate-45 group-hover:bg-primary/20 transition-colors">
+                  <Pencil className="h-5 w-5 text-primary -rotate-45" />
+                </div>
+                <h4 className="text-sm font-medium text-foreground mb-2">
+                  Dessin
+                </h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Mon échappatoire créative. J&apos;explore différents styles et
+                  techniques, ce qui nourrit ma sensibilité au design.
+                </p>
+              </div>
             </div>
           </div>
-
-          <Separator className="my-16 bg-border/50" />
         </div>
       </div>
     </section>

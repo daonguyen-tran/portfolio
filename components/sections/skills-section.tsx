@@ -134,15 +134,15 @@ const softSkills: SoftSkill[] = [
 function SkillCard({ skill }: { skill: Skill }) {
   return (
     <div className="flex-shrink-0 group">
-      <div className="w-20 h-20 sm:w-24 sm:h-24 bg-card/50 border border-border/50 rounded-xl flex items-center justify-center transition-all duration-300 hover:border-primary/50 hover:bg-card/80 hover:scale-105 hover:shadow-lg hover:shadow-primary/10">
+      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-card/30 border border-border/30 flex items-center justify-center transition-all duration-500 hover:border-primary/50 hover:bg-primary/5 group-hover:rotate-3">
         <img
           src={skill.icon}
           alt={skill.name}
-          className="w-10 h-10 sm:w-12 sm:h-12 object-contain transition-transform duration-300 group-hover:scale-110"
+          className="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-transform duration-300 group-hover:scale-110"
           loading="lazy"
         />
       </div>
-      <p className="text-xs text-center text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <p className="text-[10px] text-center text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 tracking-wide">
         {skill.name}
       </p>
     </div>
@@ -151,27 +151,28 @@ function SkillCard({ skill }: { skill: Skill }) {
 
 function SoftSkillCard({ softSkill }: { softSkill: SoftSkill }) {
   return (
-    <Card className="bg-card/50 border-border/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-      <CardContent className="p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 rounded-lg bg-primary/10 text-primary">
-            {softSkill.icon}
-          </div>
-          <h3 className="font-semibold text-foreground">{softSkill.title}</h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {softSkill.items.map((item, index) => (
-            <Badge
-              key={index}
-              variant="secondary"
-              className="bg-secondary/50 text-muted-foreground hover:bg-secondary/80 transition-colors"
-            >
-              {item}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+    <div className="group relative p-5 bg-card/20 border border-border/30 hover:border-primary/40 transition-all duration-500">
+      {/* Corner decorations */}
+      <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary/30 group-hover:border-primary/60 transition-colors" />
+      <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary/30 group-hover:border-primary/60 transition-colors" />
+
+      <div className="flex items-center gap-3 mb-3">
+        <div className="text-primary">{softSkill.icon}</div>
+        <h3 className="text-sm font-medium text-foreground tracking-wide">
+          {softSkill.title}
+        </h3>
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {softSkill.items.map((item, index) => (
+          <span
+            key={index}
+            className="text-[10px] px-2 py-1 bg-secondary/30 text-muted-foreground border border-border/20 tracking-wide"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -197,29 +198,35 @@ export function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="py-24 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-24 overflow-hidden relative">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/5 to-background" />
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-primary text-sm font-medium tracking-wide uppercase mb-2">
-            Compétences
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Technologies & Savoir-faire
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+            <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
+              Compétences
+            </p>
+            <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-wide ink-stroke">
+            Savoir-faire
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto rounded-full mb-6" />
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Les technologies et compétences que j&apos;ai acquises au cours de
-            mon parcours à l&apos;IUT et lors de mon stage chez Viking Cruises.
-          </p>
         </div>
       </div>
 
       {/* Technical Skills Carousel */}
-      <div className="mb-16">
-        <h3 className="text-center text-lg font-medium text-foreground mb-8">
-          Compétences techniques
-        </h3>
+      <div className="mb-20">
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <div className="w-6 h-px bg-primary/40" />
+          <h3 className="text-xs font-medium text-muted-foreground tracking-widest uppercase">
+            Technologies
+          </h3>
+          <div className="w-6 h-px bg-primary/40" />
+        </div>
         <div className="relative">
           {/* Gradient overlays for fade effect */}
           <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
@@ -227,23 +234,24 @@ export function SkillsSection() {
 
           {/* Scrolling container */}
           <div ref={scrollRef} className="overflow-hidden">
-            <div className="scroll-content flex gap-6 sm:gap-8 animate-scroll py-4">
+            <div className="scroll-content flex gap-4 sm:gap-6 animate-scroll py-4">
               {technicalSkills.map((skill, index) => (
                 <SkillCard key={`${skill.name}-${index}`} skill={skill} />
               ))}
             </div>
           </div>
         </div>
-        <p className="text-center text-sm text-muted-foreground mt-4">
-          Survolez les icônes pour voir le nom de chaque technologie
-        </p>
       </div>
 
       {/* Soft Skills Grid */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className="text-center text-lg font-medium text-foreground mb-8">
-          Compétences transversales
-        </h3>
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <div className="w-6 h-px bg-primary/40" />
+          <h3 className="text-xs font-medium text-muted-foreground tracking-widest uppercase">
+            Compétences transversales
+          </h3>
+          <div className="w-6 h-px bg-primary/40" />
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
           {softSkills.map((softSkill, index) => (
             <SoftSkillCard key={index} softSkill={softSkill} />
