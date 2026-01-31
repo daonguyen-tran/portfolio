@@ -11,6 +11,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
+import { SkillsSection } from "./skills-section";
 
 interface Formation {
   period: string;
@@ -191,9 +192,9 @@ export function AboutSection() {
 
             {/* Formation Timeline */}
             <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-px bg-primary/60" />
-                <h3 className="text-sm font-medium text-foreground tracking-wider uppercase">
+              <div className="flex items-center gap-4 mb-10">
+                <div className="w-8 h-px bg-primary/40" />
+                <h3 className="text-lg font-semibold text-foreground tracking-wide">
                   Formation
                 </h3>
               </div>
@@ -277,6 +278,13 @@ export function AboutSection() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Skills Subsection - outside max-w-5xl for full width carousel, but content centered */}
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <SkillsSection />
         </div>
       </div>
     </section>

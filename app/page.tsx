@@ -1,9 +1,5 @@
 import { Navbar } from "@/components/navbar";
-import {
-  HeroSection,
-  AboutSection,
-  SkillsSection,
-} from "@/components/sections";
+import { HeroSection, AboutSection } from "@/components/sections";
 
 export default function Home() {
   return (
@@ -12,7 +8,6 @@ export default function Home() {
       <main className="min-h-screen">
         <HeroSection />
         <AboutSection />
-        <SkillsSection />
       </main>
 
       {/* Footer */}

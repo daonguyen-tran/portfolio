@@ -115,7 +115,7 @@ export function HeroSection() {
           </div>
 
           {/* Right side - Profile Image */}
-          <div className="flex-shrink-0 order-first lg:order-last">
+          <div className="flex-shrink-0 order-first lg:order-last mt-20 lg:mt-0">
             <div className="relative">
               {/* Decorative frame */}
               <div className="absolute -inset-3 border border-primary/20" />

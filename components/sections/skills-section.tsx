@@ -87,14 +87,6 @@ const technicalSkills: Skill[] = [
     name: "Docker",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
   },
-  {
-    name: "Unity",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg",
-  },
-  {
-    name: "Android Studio",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg",
-  },
 ];
 
 // Soft skills et langues
@@ -198,39 +190,26 @@ export function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="py-24 overflow-hidden relative">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/5 to-background" />
-
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
-            <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
-              Compétences
-            </p>
-            <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-wide ink-stroke">
-            Savoir-faire
-          </h2>
+    <div className="mt-16">
+      {/* Subsection Header */}
+      <div className="mb-10">
+        <div className="flex items-center gap-4">
+          <div className="w-8 h-px bg-primary/40" />
+          <h3 className="text-lg font-semibold text-foreground tracking-wide">
+            Compétences
+          </h3>
         </div>
       </div>
 
       {/* Technical Skills Carousel */}
-      <div className="mb-20">
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="w-6 h-px bg-primary/40" />
-          <h3 className="text-xs font-medium text-muted-foreground tracking-widest uppercase">
-            Technologies
-          </h3>
-          <div className="w-6 h-px bg-primary/40" />
-        </div>
+      <div className="mb-12">
+        <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
+          Technologies
+        </p>
         <div className="relative">
           {/* Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling container */}
           <div ref={scrollRef} className="overflow-hidden">
@@ -244,20 +223,16 @@ export function SkillsSection() {
       </div>
 
       {/* Soft Skills Grid */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="w-6 h-px bg-primary/40" />
-          <h3 className="text-xs font-medium text-muted-foreground tracking-widest uppercase">
-            Compétences transversales
-          </h3>
-          <div className="w-6 h-px bg-primary/40" />
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+      <div>
+        <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
+          Compétences transversales
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {softSkills.map((softSkill, index) => (
             <SoftSkillCard key={index} softSkill={softSkill} />
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
