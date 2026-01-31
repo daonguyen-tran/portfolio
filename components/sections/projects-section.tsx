@@ -18,7 +18,7 @@ const projects: Project[] = [
   {
     title: "Níðhöggr",
     description:
-      "Projet de développement d'un jeu ou d'une application interactive. Travail en équipe utilisant des méthodologies agiles et des outils de versioning.",
+      "Projet de développement d'une application de gestion et de plannification d'évènements pour l'Euro-Métropole de Strasbourg. Travail en équipe de 6 utilisant des méthodologies agiles et des outils de versioning.",
     technologies: [
       "React",
       "Electron",

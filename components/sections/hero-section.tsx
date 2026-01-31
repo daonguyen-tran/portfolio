@@ -76,7 +76,7 @@ export function HeroSection() {
                 asChild
               >
                 <a
-                  href="https://github.com"
+                  href="https://github.com/daonguyen-tran"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
@@ -92,7 +92,7 @@ export function HeroSection() {
                 asChild
               >
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/daonguyen-tran-370848350/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -107,7 +107,7 @@ export function HeroSection() {
                 className="rounded-none border border-border/50 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer"
                 asChild
               >
-                <a href="mailto:votre@email.com" aria-label="Email">
+                <a href="mailto:daonguyentr.pro@gmail.com" aria-label="Email">
                   <Mail className="h-4 w-4" />
                 </a>
               </Button>
@@ -130,10 +130,10 @@ export function HeroSection() {
               {/* Image container */}
               <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden bg-secondary/20">
                 <Image
-                  src="/img/profile.jpg"
+                  src="/img/pfp.jpg"
                   alt="Photo de profil de Daonguyen TRAN"
                   fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="object-cover transition-all duration-500"
                   priority
                 />
                 {/* Subtle overlay */}

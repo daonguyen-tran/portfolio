@@ -119,7 +119,7 @@ const softSkills: SoftSkill[] = [
   {
     icon: <Puzzle className="h-5 w-5" />,
     title: "Résolution de problèmes",
-    items: ["Analyse", "Adaptation", "Capacité d'analyse", "Autonomie"],
+    items: ["Adaptation", "Capacité d'analyse", "Autonomie"],
   },
 ];
 
