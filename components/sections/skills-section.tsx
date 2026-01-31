@@ -190,49 +190,60 @@ export function SkillsSection() {
   }, []);
 
   return (
-    <div className="mt-16">
-      {/* Subsection Header */}
-      <div className="mb-10">
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-px bg-primary/40" />
-          <h3 className="text-lg font-semibold text-foreground tracking-wide">
-            Compétences
-          </h3>
-        </div>
-      </div>
+    <section id="skills" className="py-24 relative">
+      {/* Subtle background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/5 to-background" />
 
-      {/* Technical Skills Carousel */}
-      <div className="mb-12">
-        <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
-          Technologies
-        </p>
-        <div className="relative">
-          {/* Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header - Asian style */}
+          <div className="text-center mb-20">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
+                Savoir-faire
+              </p>
+              <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-wide ink-stroke">
+              Compétences
+            </h2>
+          </div>
 
-          {/* Scrolling container */}
-          <div ref={scrollRef} className="overflow-hidden">
-            <div className="scroll-content flex gap-4 sm:gap-6 animate-scroll py-4">
-              {technicalSkills.map((skill, index) => (
-                <SkillCard key={`${skill.name}-${index}`} skill={skill} />
+          {/* Technical Skills Carousel */}
+          <div className="mb-12">
+            <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
+              Technologies
+            </p>
+            <div className="relative">
+              {/* Gradient overlays for fade effect */}
+              <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+              {/* Scrolling container */}
+              <div ref={scrollRef} className="overflow-hidden">
+                <div className="scroll-content flex gap-4 sm:gap-6 animate-scroll py-4">
+                  {technicalSkills.map((skill, index) => (
+                    <SkillCard key={`${skill.name}-${index}`} skill={skill} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Soft Skills Grid */}
+          <div>
+            <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
+              Compétences transversales
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {softSkills.map((softSkill, index) => (
+                <SoftSkillCard key={index} softSkill={softSkill} />
               ))}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Soft Skills Grid */}
-      <div>
-        <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
-          Compétences transversales
-        </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {softSkills.map((softSkill, index) => (
-            <SoftSkillCard key={index} softSkill={softSkill} />
-          ))}
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }

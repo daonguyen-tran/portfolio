@@ -11,7 +11,6 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { SkillsSection } from "./skills-section";
 
 interface Formation {
   period: string;
@@ -215,7 +214,7 @@ export function AboutSection() {
             <InfoCard
               icon={<MapPin className="h-4 w-4" />}
               title="Localisation"
-              description="Illkirch-Graffenstaden, France. Disponible pour un stage à partir de janvier 2026"
+              description="Mulhouse/Strasbourg, France. Disponible pour un stage à partir de janvier 2026"
             />
             <InfoCard
               icon={<Target className="h-4 w-4" />}
@@ -278,13 +277,6 @@ export function AboutSection() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Skills Subsection - outside max-w-5xl for full width carousel, but content centered */}
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <SkillsSection />
         </div>
       </div>
     </section>
