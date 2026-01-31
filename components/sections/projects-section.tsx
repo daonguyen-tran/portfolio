@@ -18,16 +18,25 @@ const projects: Project[] = [
   {
     title: "Níðhöggr",
     description:
-      "Projet de développement d'une application de gestion et de plannification d'évènements pour l'Euro-Métropole de Strasbourg. Travail en équipe de 6 utilisant des méthodologies agiles et des outils de versioning.",
+      "Projet de développement d'une application sécurisée de gestion et de plannification d'évènements pour l'Euro-Métropole de Strasbourg. Travail en équipe de 6 utilisant des méthodologies agiles et des outils de versioning. L'application se décline en une version desktop pour les administrateurs et une version mobile pour les agents en charge de la sécurité des lieux de l'évènements sur le terrain.",
     technologies: [
       "React",
       "Electron",
       "Tailwind CSS",
       "Leaflet",
       "Prisma",
+      "Expo",
       "Gitlab",
     ],
     githubUrl: "#",
+  },
+  {
+    title: "Application de cuisine",
+    description:
+      "Application Windows Forms en C# permettant de gérer des recettes de cuisine avec une base de données locale SQLite. Fonctionnalités de recherche, ajout, modification et suppression de recettes. L'utilisateur peut sélectionner les aliments disponibles dans son frigo pour obtenir des suggestions de recettes correspondantes depuis la base de données.",
+    technologies: ["C#", "WindowsForms .NET", "SQLite", "Gitlab"],
+    githubUrl: "#",
+    liveUrl: "#",
   },
   {
     title: "Application Gallerie Photos",
@@ -36,24 +45,16 @@ const projects: Project[] = [
     technologies: ["Nextjs", "Prisma", "Supabase", "Tailwind CSS"],
   },
   {
-    title: "Portfolio Personnel",
+    title: "API Java to PUML",
     description:
-      "Ce portfolio que vous consultez actuellement ! Développé avec Next.js et Tailwind CSS, avec un design moderne inspiré de l'esthétique asiatique.",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    githubUrl: "#",
-    liveUrl: "#",
+      "Projet académique de première année visant à développer une API capable de convertir du code Java en diagrammes UML au format PUML. Travail en binôme avec utilisation de Git pour le versioning. Ce travail a permis une meilleure compréhension du fonctionnement des classes Java.",
+    technologies: ["Java", "UML", "Gitlab"],
   },
   {
-    title: "Projet T3-T4",
+    title: "Application Les Bons Comptes",
     description:
-      "Projet académique de troisième année impliquant la conception et le développement d'une application complète, de l'analyse des besoins au déploiement.",
-    technologies: ["À définir"],
-  },
-  {
-    title: "Projet T6",
-    description:
-      "Projet académique de troisième année impliquant la conception et le développement d'une application complète, de l'analyse des besoins au déploiement.",
-    technologies: ["À définir"],
+      "Application Windows Forms en C# permettant de gérer les dépenses partagées entre plusieurs utilisateurs. Chaque utilisateur peut ajouter des dépenses, et l'application calcule automatiquement les montants à rembourser entre les participants.",
+    technologies: ["C#", "WindowsForms .NET", "SQLite", "Gitlab"],
   },
 ];
 

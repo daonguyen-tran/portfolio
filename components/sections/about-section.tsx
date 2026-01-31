@@ -257,8 +257,8 @@ export function AboutSection() {
                   Arts martiaux
                 </h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Pratique du kung-fu en club depuis plusieurs années.
-                  Discipline, maîtrise de soi et respect des traditions.
+                  Pratique du kung-fu en club depuis 8 ans. Discipline, maîtrise
+                  de soi et respect des traditions.
                 </p>
               </div>
 
@@ -272,7 +272,8 @@ export function AboutSection() {
                 </h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   Mon échappatoire créative. J&apos;explore différents styles et
-                  techniques, ce qui nourrit ma sensibilité au design.
+                  techniques, ce qui nourrit ma sensibilité au design. Le style
+                  manga étant mon style principal.
                 </p>
               </div>
             </div>
