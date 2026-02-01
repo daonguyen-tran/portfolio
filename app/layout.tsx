@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Étudiant BUT Informatique",
+  title: "Portfolio | Daonguyen TRAN - Étudiant BUT Informatique",
   description:
-    "Portfolio personnel d'un étudiant en 3ème année de BUT Informatique. Découvrez mes projets, compétences et parcours professionnel.",
+    "Portfolio personnel de 3ème année de BUT Informatique. Découvrez mes projets, compétences et parcours professionnel.",
   keywords: [
     "portfolio",
     "développeur",
@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     "web",
     "développement",
   ],
-  authors: [{ name: "Votre Nom" }],
+  authors: [{ name: "Daonguyen TRAN" }],
   openGraph: {
-    title: "Portfolio | Étudiant BUT Informatique",
+    title: "Portfolio | Daonguyen TRAN - Étudiant BUT Informatique",
     description:
-      "Portfolio personnel d'un étudiant en 3ème année de BUT Informatique.",
+      "Portfolio personnel de 3ème année de BUT Informatique. Découvrez mes projets, compétences et parcours professionnel.",
     type: "website",
     locale: "fr_FR",
   },

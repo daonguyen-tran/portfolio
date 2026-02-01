@@ -187,7 +187,8 @@ export function AboutSection() {
                   réseau et le développement web. D'autres matières annexes mais
                   tout aussi importantes comme les mathématiques, la gestion de
                   projet, l'économie et l'anglais technique ont également
-                  enrichi mon parcours.
+                  enrichi mon parcours. La plupart des cours ont été approfondis
+                  au fil du cursus.
                 </p>
               </div>
               <div className="relative pl-6 border-l border-border/30">
@@ -209,6 +210,16 @@ export function AboutSection() {
                   expérience très enrichissante m'a permis de développer mes
                   compétences en gestion de projet et l'importance de la
                   compréhension des besoins utilisateurs.
+                </p>
+              </div>
+              <div className="relative pl-6 border-l border-border/30">
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  La troisième année de BUT a mis l'accent sur les pratiques et
+                  la qualité de développement, avec des cours sur le CI/CD, la
+                  virtualisation, les tests et la sécurité. J'ai également eu
+                  l'occasion de développer une application dans le cadre d'un
+                  projet conséquent dont le client était un personnel de
+                  l'Euro-Métropole de Strasbourg.
                 </p>
               </div>
             </div>

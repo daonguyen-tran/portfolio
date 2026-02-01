@@ -54,7 +54,7 @@ const projects: Project[] = [
     icon: <Images className="h-4 w-4" />,
     description:
       "Application web développée durant mon temps libre, permettant de gérer et partager des photos avec des fonctionnalités avancées de création de compte, de visualisation, de tri et de recherche.",
-    technologies: ["Nextjs", "Prisma", "Supabase", "Tailwind CSS"],
+    technologies: ["React", "Nextjs", "Prisma", "Supabase", "Tailwind CSS"],
   },
   {
     title: "API Java to PUML",
