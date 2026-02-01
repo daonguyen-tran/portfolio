@@ -21,71 +21,71 @@ const technicalSkills: Skill[] = [
   // Langages principaux
   {
     name: "TypeScript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    icon: "/assets/typescript-original.svg",
   },
   {
     name: "Java",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    icon: "/assets/java-original.svg",
   },
   {
     name: "C",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+    icon: "/assets/c-original.svg",
   },
   {
     name: "C#",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+    icon: "/assets/csharp-original.svg",
   },
   // Environnement Microsoft
   {
     name: "Azure DevOps",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+    icon: "/assets/azure-original.svg",
   },
   {
     name: ".NET",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg",
+    icon: "/assets/dotnetcore-original.svg",
   },
   {
     name: "PowerShell",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powershell/powershell-original.svg",
+    icon: "/assets/powershell-original.svg",
   },
   // Programmation web
   {
     name: "HTML5",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    icon: "/assets/html5-original.svg",
   },
   {
     name: "CSS3",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    icon: "/assets/css3-original.svg",
   },
   {
     name: "React",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    icon: "/assets/react-original.svg",
   },
   {
     name: "Next.js",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    icon: "/assets/nextjs-original.svg",
   },
   // Base de données
   {
     name: "Oracle",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg",
+    icon: "/assets/oracle-original.svg",
   },
   {
     name: "MySQL",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    icon: "/assets/mysql-original.svg",
   },
   {
     name: "Prisma",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
+    icon: "/assets/prisma-original.svg",
   },
   // Autres outils
   {
     name: "Git",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    icon: "/assets/git-original.svg",
   },
   {
     name: "Docker",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    icon: "/assets/docker-original.svg",
   },
 ];
 
