@@ -1,7 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink, Github, FolderGit2, ChevronDown } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  FolderGit2,
+  ChevronDown,
+  CalendarClock,
+  ChefHat,
+  Images,
+  Code2,
+  Wallet,
+  BookOpen,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -9,6 +20,7 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
+  icon: React.ReactNode;
   image?: string;
   githubUrl?: string;
   liveUrl?: string;
@@ -17,6 +29,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: "StrasPlanning",
+    icon: <CalendarClock className="h-4 w-4" />,
     description:
       "Projet de développement d'une application sécurisée de gestion et de plannification d'évènements pour l'Euro-Métropole de Strasbourg. Travail en équipe de 6 utilisant des méthodologies agiles et des outils de versioning. L'application se décline en une version desktop pour les administrateurs et une version mobile pour les agents en charge de la sécurité des lieux de l'évènements sur le terrain.",
     technologies: [
@@ -31,24 +44,42 @@ const projects: Project[] = [
   },
   {
     title: "Application de cuisine",
+    icon: <ChefHat className="h-4 w-4" />,
     description:
       "Application Windows Forms en C# permettant de gérer des recettes de cuisine avec une base de données locale SQLite. Fonctionnalités de recherche, ajout, modification et suppression de recettes. L'utilisateur peut sélectionner les aliments disponibles dans son frigo pour obtenir des suggestions de recettes correspondantes depuis la base de données.",
     technologies: ["C#", "WindowsForms .NET", "SQLite", "Gitlab"],
   },
   {
     title: "Application Gallerie Photos",
+    icon: <Images className="h-4 w-4" />,
     description:
       "Application web développée durant mon temps libre, permettant de gérer et partager des photos avec des fonctionnalités avancées de création de compte, de visualisation, de tri et de recherche.",
     technologies: ["Nextjs", "Prisma", "Supabase", "Tailwind CSS"],
   },
   {
     title: "API Java to PUML",
+    icon: <Code2 className="h-4 w-4" />,
     description:
       "Projet académique de première année visant à développer une API capable de convertir du code Java en diagrammes UML au format PUML. Travail en binôme avec utilisation de Git pour le versioning. Ce travail a permis une meilleure compréhension du fonctionnement des classes Java.",
     technologies: ["Java", "UML", "Gitlab"],
   },
   {
+    title: "Application Web Bibliothèque",
+    icon: <BookOpen className="h-4 w-4" />,
+    description:
+      "Application web de gestion de bibliothèque développée avec React Router permettant la gestion des livres, des emprunts et des utilisateurs en interrogeant une API. Ce projet académique m'a permis de renforcer mes compétences en développement web et en gestion de bases de données, tout en me faisant découvrir des bibliothèques comme lucide-react et shadcn/ui.",
+    technologies: [
+      "React",
+      "React Router",
+      "TypeScript",
+      "CSS",
+      "Prisma",
+      "Gitlab",
+    ],
+  },
+  {
     title: "Application Les Bons Comptes",
+    icon: <Wallet className="h-4 w-4" />,
     description:
       "Application Windows Forms en C# permettant de gérer les dépenses partagées entre plusieurs utilisateurs. Chaque utilisateur peut ajouter des dépenses, et l'application calcule automatiquement les montants à rembourser entre les participants.",
     technologies: ["C#", "WindowsForms .NET", "SQLite", "Gitlab"],
@@ -70,7 +101,7 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="flex items-start justify-between gap-4 mb-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary/10 border border-primary/30 flex items-center justify-center rotate-45 group-hover:bg-primary/20 transition-colors">
-              <FolderGit2 className="h-4 w-4 text-primary -rotate-45" />
+              <span className="text-primary -rotate-45">{project.icon}</span>
             </div>
             <h3 className="text-lg font-semibold text-foreground tracking-wide">
               {project.title}

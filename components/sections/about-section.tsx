@@ -181,10 +181,34 @@ export function AboutSection() {
               </div>
               <div className="relative pl-6 border-l border-border/30">
                 <p className="text-muted-foreground leading-relaxed text-sm">
+                  Ma première année de BUT m&apos;a permis d&apos;acquérir de
+                  solides bases en informatique, couvrant des domaines tels que
+                  l&apos;algorithmie, la programmation, les bases de données, le
+                  réseau et le développement web. D'autres matières annexes mais
+                  tout aussi importantes comme les mathématiques, la gestion de
+                  projet, l'économie et l'anglais technique ont également
+                  enrichi mon parcours.
+                </p>
+              </div>
+              <div className="relative pl-6 border-l border-border/30">
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  Lors de ma deuxième année de BUT, le parcours que j'ai suivi,
+                  "Réalisation d&apos;Applications: Conception, Développement,
+                  Validation", m&apos;a permis de me spécialiser dans le
+                  développement logiciel. J&apos;ai approfondi mes compétences
+                  en développement web et ainsi découvert React qui est devenu
+                  mon framework de prédilection.
+                </p>
+              </div>
+              <div className="relative pl-6 border-l border-border/30">
+                <p className="text-muted-foreground leading-relaxed text-sm">
                   Mon stage chez Viking Cruises à Bâle (Suisse) m&apos;a permis
                   de travailler dans un environnement international et agile, où
                   j&apos;ai développé une application interne avec les outils
-                  Microsoft (PowerApps, Power BI, Azure DevOps).
+                  Microsoft (PowerApps, Power BI, Azure DevOps). Cette
+                  expérience très enrichissante m'a permis de développer mes
+                  compétences en gestion de projet et l'importance de la
+                  compréhension des besoins utilisateurs.
                 </p>
               </div>
             </div>

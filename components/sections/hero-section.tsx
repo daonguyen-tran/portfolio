@@ -53,7 +53,7 @@ export function HeroSection() {
 
             {/* Title/Role */}
             <p className="text-lg sm:text-xl text-muted-foreground font-light tracking-wide">
-              Développeur en devenir · BUT Informatique
+              Étudiant en 3ème année de BUT Informatique
             </p>
 
             {/* Description in a styled container */}
