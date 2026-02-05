@@ -151,6 +151,8 @@ function InfoCard({ icon, title, description }: InfoCardProps) {
 export function AboutSection() {
   const { ref: headerRef, isInView: headerInView } = useInView();
   const { ref: contentRef, isInView: contentInView } = useInView();
+  const { ref: infoCardsRef, isInView: infoCardsInView } = useInView();
+  const { ref: interestsRef, isInView: interestsInView } = useInView();
 
   return (
     <section id="about" className="py-24 relative">
@@ -257,7 +259,10 @@ export function AboutSection() {
           </div>
 
           {/* Info Cards - Localisation & Objectif */}
-          <div className="grid sm:grid-cols-2 gap-6 mt-16">
+          <div
+            ref={infoCardsRef}
+            className={`grid sm:grid-cols-2 gap-6 mt-16 ${infoCardsInView ? "animate-in fade-in-up delay-300" : "opacity-0"}`}
+          >
             <InfoCard
               icon={<MapPin className="h-4 w-4" />}
               title="Localisation"
@@ -271,7 +276,10 @@ export function AboutSection() {
           </div>
 
           {/* Centres d'intérêt */}
-          <div className="mt-20">
+          <div
+            ref={interestsRef}
+            className={`mt-20 ${interestsInView ? "animate-in fade-in-up delay-200" : "opacity-0"}`}
+          >
             <div className="flex items-center justify-center gap-4 mb-10">
               <span className="h-px w-8 bg-gradient-to-r from-transparent to-primary/40" />
               <h3 className="text-sm font-medium text-foreground tracking-wider uppercase">
