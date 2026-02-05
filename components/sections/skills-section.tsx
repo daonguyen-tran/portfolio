@@ -5,6 +5,7 @@ import { Globe, Users, Lightbulb, Puzzle, Languages } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useInView } from "@/hooks/useInView";
+import { useTranslations } from "next-intl";
 
 interface Skill {
   name: string;
@@ -90,39 +91,20 @@ const technicalSkills: Skill[] = [
   },
 ];
 
-// Soft skills et langues
-const softSkills: SoftSkill[] = [
-  {
-    icon: <Languages className="h-5 w-5" />,
-    title: "Langues",
-    items: [
-      "Français (courant)",
-      "Vietnamien (bilingue)",
-      "Anglais (B2)",
-      "Allemand (A2-B1)",
-    ],
-  },
-  {
-    icon: <Users className="h-5 w-5" />,
-    title: "Travail d'équipe",
-    items: [
-      "Collaboration",
-      "Communication",
-      "Méthodologie Agile",
-      "Esprit d'équipe",
-    ],
-  },
-  {
-    icon: <Lightbulb className="h-5 w-5" />,
-    title: "Apprentissage",
-    items: ["Curiosité", "Rigueur", "Auto-formation", "Veille technologique"],
-  },
-  {
-    icon: <Puzzle className="h-5 w-5" />,
-    title: "Résolution de problèmes",
-    items: ["Adaptation", "Capacité d'analyse", "Autonomie"],
-  },
-];
+// Soft skills et langues - icons mapped by key
+const softSkillKeys = [
+  "languages",
+  "teamwork",
+  "learning",
+  "problemSolving",
+] as const;
+
+const softSkillIcons: Record<string, React.ReactNode> = {
+  languages: <Languages className="h-5 w-5" />,
+  teamwork: <Users className="h-5 w-5" />,
+  learning: <Lightbulb className="h-5 w-5" />,
+  problemSolving: <Puzzle className="h-5 w-5" />,
+};
 
 function SkillCard({ skill }: { skill: Skill }) {
   return (
@@ -170,6 +152,7 @@ function SoftSkillCard({ softSkill }: { softSkill: SoftSkill }) {
 }
 
 export function SkillsSection() {
+  const t = useTranslations("skills");
   const scrollRef = useRef<HTMLDivElement>(null);
   const { ref: headerRef, isInView: headerInView } = useInView();
   const { ref: carouselRef, isInView: carouselInView } = useInView();
@@ -208,12 +191,12 @@ export function SkillsSection() {
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
-                Savoir-faire
+                {t("sectionLabel")}
               </p>
               <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-wide ink-stroke">
-              Compétences
+              {t("title")}
             </h2>
           </div>
 
@@ -223,7 +206,7 @@ export function SkillsSection() {
             className={`mb-12 ${carouselInView ? "animate-in fade-in delay-200" : "opacity-0"}`}
           >
             <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
-              Technologies
+              {t("technologiesLabel")}
             </p>
             <div className="relative">
               {/* Gradient overlays for fade effect */}
@@ -249,12 +232,22 @@ export function SkillsSection() {
             }
           >
             <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
-              Compétences transversales
+              {t("softSkillsLabel")}
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {softSkills.map((softSkill, index) => (
-                <SoftSkillCard key={index} softSkill={softSkill} />
-              ))}
+              {softSkillKeys.map((key) => {
+                const items: string[] = t.raw(`softSkills.${key}.items`);
+                return (
+                  <SoftSkillCard
+                    key={key}
+                    softSkill={{
+                      icon: softSkillIcons[key],
+                      title: t(`softSkills.${key}.title`),
+                      items,
+                    }}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

@@ -4,8 +4,10 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
+import { useTranslations } from "next-intl";
 
 export function HeroSection() {
+  const t = useTranslations("hero");
   const { ref: leftRef, isInView: leftInView } = useInView({ threshold: 0.2 });
   const { ref: rightRef, isInView: rightInView } = useInView({
     threshold: 0.2,
@@ -46,7 +48,7 @@ export function HeroSection() {
             <div className="flex items-center justify-center lg:justify-start gap-4">
               <span className="h-px w-8 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase font-light">
-                Bienvenue
+                {t("welcome")}
               </p>
               <span className="h-px w-8 bg-gradient-to-l from-transparent to-primary/60 lg:hidden" />
             </div>
@@ -63,7 +65,7 @@ export function HeroSection() {
 
             {/* Title/Role */}
             <p className="text-lg sm:text-xl text-muted-foreground font-light tracking-wide">
-              Étudiant en 3ème année de BUT Informatique
+              {t("role")}
             </p>
 
             {/* Description in a styled container */}
@@ -71,9 +73,7 @@ export function HeroSection() {
               <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-primary/40" />
               <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-primary/40" />
               <p className="text-muted-foreground leading-relaxed">
-                Passionné par le développement web et les nouvelles
-                technologies, je construis mon parcours professionnel avec
-                curiosité et détermination.
+                {t("description")}
               </p>
             </div>
 
@@ -144,7 +144,7 @@ export function HeroSection() {
               <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden bg-secondary/20">
                 <Image
                   src="/img/pfp.jpg"
-                  alt="Photo de profil de Daonguyen TRAN"
+                  alt={t("profileAlt")}
                   fill
                   className="object-cover transition-all duration-500"
                   priority
@@ -170,7 +170,7 @@ export function HeroSection() {
             className="rounded-none border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground px-10 py-6 tracking-wide transition-all duration-300"
             onClick={handleScrollToAbout}
           >
-            Découvrir mon parcours
+            {t("cta")}
             <ArrowDown className="ml-3 h-4 w-4" />
           </Button>
         </div>
@@ -179,7 +179,7 @@ export function HeroSection() {
       {/* Scroll indicator - minimal */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
         <span className="text-[10px] text-muted-foreground/50 tracking-widest uppercase">
-          Scroll
+          {t("scroll")}
         </span>
         <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent" />
       </div>
