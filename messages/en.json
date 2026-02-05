@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "title": "Portfolio | Daonguyen TRAN - Computer Science Student",
+    "description": "Personal portfolio of a 3rd year Computer Science student. Discover my projects, skills and career path.",
+    "keywords": "portfolio, developer, Computer Science, student, web, development"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "welcome": "Welcome",
+    "role": "3rd year Computer Science student",
+    "description": "Passionate about web development and new technologies, I am building my career path with curiosity and determination.",
+    "cta": "Discover my journey",
+    "scroll": "Scroll",
+    "profileAlt": "Profile picture of Daonguyen TRAN"
+  },
+  "about": {
+    "sectionLabel": "About",
+    "title": "My journey",
+    "paragraphs": {
+      "intro": "A passionate student in my third year of a Bachelor's in Computer Science at IUT Robert Schuman (Illkirch-Graffenstaden), I am looking for an internship in software development to complete my degree.",
+      "firstYear": "My first year allowed me to build strong foundations in computer science, covering areas such as algorithms, programming, databases, networking, and web development. Other complementary but equally important subjects like mathematics, project management, economics, and technical English also enriched my education. Most courses were deepened throughout the program.",
+      "secondYear": "During my second year, the specialization I followed, \"Application Development: Design, Development, Validation\", allowed me to specialize in software development. I deepened my web development skills and discovered React, which became my preferred framework.",
+      "internship": "My internship at Viking Cruises in Basel (Switzerland) allowed me to work in an international and agile environment, where I developed an internal application using Microsoft tools (PowerApps, Power BI, Azure DevOps). This highly enriching experience helped me develop my project management skills and understand the importance of user needs comprehension.",
+      "thirdYear": "The third year emphasized development practices and quality, with courses on CI/CD, virtualization, testing, and security. I also had the opportunity to develop an application as part of a major project whose client was a member of the Eurometropolis of Strasbourg staff."
+    },
+    "formationTitle": "Education",
+    "formations": [
+      {
+        "period": "2025 - 2026",
+        "title": "Bachelor's in Computer Science – 3rd year",
+        "institution": "IUT Robert Schuman",
+        "location": "Illkirch-Graffenstaden",
+        "description": "Specialization in Application Development: design, development, validation"
+      },
+      {
+        "period": "2024 - 2025",
+        "title": "Bachelor's in Computer Science – 2nd year",
+        "institution": "IUT Robert Schuman",
+        "location": "Illkirch-Graffenstaden",
+        "description": "Specialization in Application Development: design, development, validation",
+        "secondLine": "End-of-year internship at Viking Cruises (Basel, Switzerland): development of an internal application with PowerApps and Power BI",
+        "highlight": "DUT obtained"
+      },
+      {
+        "period": "2022 - 2024",
+        "title": "Bachelor's in Computer Science – 1st year",
+        "institution": "IUT Robert Schuman",
+        "location": "Illkirch-Graffenstaden",
+        "description": "Core curriculum: computer science fundamentals, algorithms, programming, development"
+      },
+      {
+        "period": "2018 - 2022",
+        "title": "General Baccalaureate",
+        "institution": "Lycée Jean-Henri Lambert",
+        "location": "Mulhouse",
+        "description": "General studies",
+        "secondLine": "Specializations: Mathematics & English Language, Literature and Culture | Advanced Mathematics option",
+        "highlight": "With Honors"
+      }
+    ],
+    "infoCards": {
+      "locationTitle": "Location",
+      "locationDescription": "Mulhouse/Strasbourg, France. Available for an internship starting January 2026",
+      "objectiveTitle": "Career objective",
+      "objectiveDescription": "Become a Full Stack developer and contribute to innovative and useful projects in an international environment"
+    },
+    "interests": {
+      "title": "Interests",
+      "sport": {
+        "title": "Sports",
+        "description": "Basketball and volleyball at university. These team sports teach me teamwork and perseverance."
+      },
+      "martialArts": {
+        "title": "Martial arts",
+        "description": "Practicing kung-fu in a club for 8 years. Discipline, self-control and respect for traditions."
+      },
+      "drawing": {
+        "title": "Drawing",
+        "description": "My creative escape. I explore different styles and techniques, which nurtures my sensitivity to design. Manga being my main style."
+      }
+    }
+  },
+  "skills": {
+    "sectionLabel": "Expertise",
+    "title": "Skills",
+    "technologiesLabel": "Technologies",
+    "softSkillsLabel": "Soft skills",
+    "softSkills": {
+      "languages": {
+        "title": "Languages",
+        "items": [
+          "French (fluent)",
+          "Vietnamese (bilingual)",
+          "English (B2)",
+          "German (A2-B1)"
+        ]
+      },
+      "teamwork": {
+        "title": "Teamwork",
+        "items": [
+          "Collaboration",
+          "Communication",
+          "Agile Methodology",
+          "Team spirit"
+        ]
+      },
+      "learning": {
+        "title": "Learning",
+        "items": ["Curiosity", "Rigor", "Self-learning", "Technology watch"]
+      },
+      "problemSolving": {
+        "title": "Problem solving",
+        "items": ["Adaptability", "Analytical thinking", "Autonomy"]
+      }
+    }
+  },
+  "projects": {
+    "sectionLabel": "Achievements",
+    "title": "My projects",
+    "loadMore": "See more projects",
+    "viewOnGithub": "View on GitHub",
+    "viewSite": "View website",
+    "items": [
+      {
+        "title": "StrasPlanning",
+        "description": "Development of a secure event management and planning application for the Eurometropolis of Strasbourg. Teamwork of 6 using agile methodologies and versioning tools. The application comes in a desktop version for administrators and a mobile version for security agents in charge of event venue safety on the field."
+      },
+      {
+        "title": "Cooking application",
+        "description": "Windows Forms application in C# for managing cooking recipes with a local SQLite database. Features include searching, adding, editing and deleting recipes. Users can select available ingredients from their fridge to get matching recipe suggestions from the database."
+      },
+      {
+        "title": "Photo Gallery Application",
+        "description": "Web application developed during my free time, allowing users to manage and share photos with advanced features for account creation, viewing, sorting and searching."
+      },
+      {
+        "title": "API Java to PUML",
+        "description": "First-year academic project aimed at developing an API capable of converting Java code into UML diagrams in PUML format. Pair programming with Git for versioning. This work led to a better understanding of how Java classes work."
+      },
+      {
+        "title": "Library Web Application",
+        "description": "Library management web application developed with React Router enabling book, loan, and user management by querying an API. This academic project allowed me to strengthen my web development and database management skills, while discovering libraries like lucide-react and shadcn/ui."
+      },
+      {
+        "title": "Les Bons Comptes Application",
+        "description": "Windows Forms application in C# for managing shared expenses between multiple users. Each user can add expenses, and the application automatically calculates the amounts to be reimbursed between participants."
+      }
+    ]
+  },
+  "contact": {
+    "sectionLabel": "Contact",
+    "title": "Get in touch",
+    "intro": "Feel free to contact me for any questions, internship opportunities, or simply to chat. I am always open to new encounters and collaborations.",
+    "email": "Email",
+    "location": "Location",
+    "locationValue": "Mulhouse/Strasbourg, France",
+    "findMe": "Find me on",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Subject of your message",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "success": "Message sent successfully!"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Portfolio"
+  }
+}

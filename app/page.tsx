@@ -1,3 +1,5 @@
+"use client";
+
 import { Navbar } from "@/components/navbar";
 import {
   HeroSection,
@@ -7,8 +9,11 @@ import {
   ContactSection,
 } from "@/components/sections";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("footer");
+
   return (
     <>
       <Navbar />
@@ -74,7 +79,7 @@ export default function Home() {
               {/* Copyright */}
               <div className="text-center md:text-right">
                 <p className="text-xs text-muted-foreground">
-                  © {new Date().getFullYear()} Portfolio
+                  {t("copyright", { year: new Date().getFullYear() })}
                 </p>
                 <p className="text-[10px] text-muted-foreground/50 mt-1">
                   Next.js · Tailwind CSS · shadcn/ui

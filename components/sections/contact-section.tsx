@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Mail, MapPin, Send, Github, Linkedin, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInView } from "@/hooks/useInView";
+import { useTranslations } from "next-intl";
 
 interface ContactInfo {
   icon: React.ReactNode;
@@ -11,20 +12,6 @@ interface ContactInfo {
   value: string;
   href?: string;
 }
-
-const contactInfo: ContactInfo[] = [
-  {
-    icon: <Mail className="h-4 w-4" />,
-    label: "Email",
-    value: "daonguyentr.pro@gmail.com",
-    href: "mailto:daonguyentr.pro@gmail.com",
-  },
-  {
-    icon: <MapPin className="h-4 w-4" />,
-    label: "Localisation",
-    value: "Mulhouse/Strasbourg, France",
-  },
-];
 
 const socialLinks = [
   {
@@ -40,6 +27,7 @@ const socialLinks = [
 ];
 
 export function ContactSection() {
+  const t = useTranslations("contact");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,6 +40,20 @@ export function ContactSection() {
   const { ref: headerRef, isInView: headerInView } = useInView();
   const { ref: leftRef, isInView: leftInView } = useInView();
   const { ref: rightRef, isInView: rightInView } = useInView();
+
+  const contactInfo: ContactInfo[] = [
+    {
+      icon: <Mail className="h-4 w-4" />,
+      label: t("email"),
+      value: "daonguyentr.pro@gmail.com",
+      href: "mailto:daonguyentr.pro@gmail.com",
+    },
+    {
+      icon: <MapPin className="h-4 w-4" />,
+      label: t("location"),
+      value: t("locationValue"),
+    },
+  ];
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -92,12 +94,12 @@ export function ContactSection() {
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
-                Contact
+                {t("sectionLabel")}
               </p>
               <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-wide ink-stroke">
-              Me contacter
+              {t("title")}
             </h2>
           </div>
 
@@ -109,9 +111,7 @@ export function ContactSection() {
             >
               <div className="relative pl-6 border-l border-primary/30">
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  N&apos;hésitez pas à me contacter pour toute question,
-                  opportunité de stage ou simplement pour échanger. Je suis
-                  toujours ouvert aux nouvelles rencontres et collaborations.
+                  {t("intro")}
                 </p>
               </div>
 
@@ -146,7 +146,7 @@ export function ContactSection() {
               {/* Social Links */}
               <div className="pt-4">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider mb-4">
-                  Retrouvez-moi sur
+                  {t("findMe")}
                 </p>
                 <div className="flex items-center gap-3">
                   {socialLinks.map((link, index) => (
@@ -192,7 +192,7 @@ export function ContactSection() {
                     htmlFor="name"
                     className="block text-xs text-muted-foreground uppercase tracking-wider mb-2"
                   >
-                    Nom
+                    {t("form.name")}
                   </label>
                   <input
                     type="text"
@@ -202,7 +202,7 @@ export function ContactSection() {
                     onChange={handleChange}
                     required
                     className="w-full bg-background/50 border border-border/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
-                    placeholder="Votre nom"
+                    placeholder={t("form.namePlaceholder")}
                   />
                 </div>
 
@@ -212,7 +212,7 @@ export function ContactSection() {
                     htmlFor="email"
                     className="block text-xs text-muted-foreground uppercase tracking-wider mb-2"
                   >
-                    Email
+                    {t("form.email")}
                   </label>
                   <input
                     type="email"
@@ -222,7 +222,7 @@ export function ContactSection() {
                     onChange={handleChange}
                     required
                     className="w-full bg-background/50 border border-border/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
-                    placeholder="votre@email.com"
+                    placeholder={t("form.emailPlaceholder")}
                   />
                 </div>
 
@@ -232,7 +232,7 @@ export function ContactSection() {
                     htmlFor="subject"
                     className="block text-xs text-muted-foreground uppercase tracking-wider mb-2"
                   >
-                    Sujet
+                    {t("form.subject")}
                   </label>
                   <input
                     type="text"
@@ -242,7 +242,7 @@ export function ContactSection() {
                     onChange={handleChange}
                     required
                     className="w-full bg-background/50 border border-border/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
-                    placeholder="Objet de votre message"
+                    placeholder={t("form.subjectPlaceholder")}
                   />
                 </div>
 
@@ -252,7 +252,7 @@ export function ContactSection() {
                     htmlFor="message"
                     className="block text-xs text-muted-foreground uppercase tracking-wider mb-2"
                   >
-                    Message
+                    {t("form.message")}
                   </label>
                   <textarea
                     id="message"
@@ -262,7 +262,7 @@ export function ContactSection() {
                     required
                     rows={5}
                     className="w-full bg-background/50 border border-border/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none"
-                    placeholder="Votre message..."
+                    placeholder={t("form.messagePlaceholder")}
                   />
                 </div>
 
@@ -275,11 +275,11 @@ export function ContactSection() {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Envoi en cours...
+                      {t("form.submitting")}
                     </>
                   ) : (
                     <>
-                      Envoyer le message
+                      {t("form.submit")}
                       <Send className="ml-2 h-4 w-4" />
                     </>
                   )}
@@ -288,9 +288,7 @@ export function ContactSection() {
                 {/* Success Message */}
                 {submitted && (
                   <div className="text-center py-3 bg-primary/10 border border-primary/30">
-                    <p className="text-sm text-primary">
-                      Message envoyé avec succès !
-                    </p>
+                    <p className="text-sm text-primary">{t("form.success")}</p>
                   </div>
                 )}
               </form>
