@@ -1,3 +1,5 @@
+"use client";
+
 import {
   GraduationCap,
   Target,
@@ -11,6 +13,8 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
+import { useInView } from "@/hooks/useInView";
+import { useTranslations } from "next-intl";
 
 interface Formation {
   period: string;
@@ -21,46 +25,6 @@ interface Formation {
   secondLine?: string;
   highlight?: string;
 }
-
-const formations: Formation[] = [
-  {
-    period: "2025 - 2026",
-    title: "BUT Informatique 3ème année",
-    institution: "IUT Robert Schuman",
-    location: "Illkirch-Graffenstaden",
-    description:
-      "Parcours Réalisation d'applications : conception, développement, validation",
-  },
-  {
-    period: "2024 - 2025",
-    title: "BUT Informatique 2ème année",
-    institution: "IUT Robert Schuman",
-    location: "Illkirch-Graffenstaden",
-    description:
-      "Parcours Réalisation d'applications : conception, développement, validation",
-    secondLine:
-      "Stage de fin d'année chez Viking Cruises (Bâle, Suisse) : développement d'une application interne avec PowerApps et Power BI",
-    highlight: "DUT obtenu",
-  },
-  {
-    period: "2022 - 2024",
-    title: "BUT Informatique 1ère année",
-    institution: "IUT Robert Schuman",
-    location: "Illkirch-Graffenstaden",
-    description:
-      "Tronc commun : bases de l'informatique, algorithmie, programmation, développement",
-  },
-  {
-    period: "2018 - 2022",
-    title: "Baccalauréat général",
-    institution: "Lycée Jean-Henri Lambert",
-    location: "Mulhouse",
-    description: "Filière générale",
-    secondLine:
-      "Spécialités Mathématiques & LLCER Anglais | Option Maths expertes",
-    highlight: "Mention Bien",
-  },
-];
 
 function TimelineItem({
   formation,
@@ -146,6 +110,26 @@ function InfoCard({ icon, title, description }: InfoCardProps) {
 }
 
 export function AboutSection() {
+  const t = useTranslations("about");
+  const { ref: headerRef, isInView: headerInView } = useInView();
+  const { ref: contentRef, isInView: contentInView } = useInView();
+  const { ref: infoCardsRef, isInView: infoCardsInView } = useInView();
+  const { ref: interestsRef, isInView: interestsInView } = useInView();
+
+  const formations: Formation[] = [0, 1, 2, 3].map((i) => ({
+    period: t(`formations.${i}.period`),
+    title: t(`formations.${i}.title`),
+    institution: t(`formations.${i}.institution`),
+    location: t(`formations.${i}.location`),
+    description: t(`formations.${i}.description`),
+    secondLine: t.has(`formations.${i}.secondLine`)
+      ? t(`formations.${i}.secondLine`)
+      : undefined,
+    highlight: t.has(`formations.${i}.highlight`)
+      ? t(`formations.${i}.highlight`)
+      : undefined,
+  }));
+
   return (
     <section id="about" className="py-24 relative">
       {/* Subtle background */}
@@ -154,72 +138,52 @@ export function AboutSection() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Section Header - Asian style */}
-          <div className="text-center mb-20">
+          <div
+            ref={headerRef}
+            className={`text-center mb-20 ${headerInView ? "animate-in fade-in-up" : "opacity-0"}`}
+          >
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
-                À propos
+                {t("sectionLabel")}
               </p>
               <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-wide ink-stroke">
-              Mon parcours
+              {t("title")}
             </h2>
           </div>
 
           {/* Content */}
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div
+            ref={contentRef}
+            className={`grid lg:grid-cols-2 gap-16 items-start ${contentInView ? "animate-in fade-in-up delay-200" : "opacity-0"}`}
+          >
             {/* Text Content */}
             <div className="space-y-6">
               <div className="relative pl-6 border-l border-primary/30">
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Étudiant passionné en troisième année de BUT Informatique à
-                  l&apos;IUT Robert Schuman (Illkirch-Graffenstaden), je suis à
-                  la recherche d&apos;un stage en développement informatique
-                  pour valider mon diplôme.
+                  {t("paragraphs.intro")}
                 </p>
               </div>
               <div className="relative pl-6 border-l border-border/30">
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Ma première année de BUT m&apos;a permis d&apos;acquérir de
-                  solides bases en informatique, couvrant des domaines tels que
-                  l&apos;algorithmie, la programmation, les bases de données, le
-                  réseau et le développement web. D'autres matières annexes mais
-                  tout aussi importantes comme les mathématiques, la gestion de
-                  projet, l'économie et l'anglais technique ont également
-                  enrichi mon parcours. La plupart des cours ont été approfondis
-                  au fil du cursus.
+                  {t("paragraphs.firstYear")}
                 </p>
               </div>
               <div className="relative pl-6 border-l border-border/30">
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Lors de ma deuxième année de BUT, le parcours que j'ai suivi,
-                  "Réalisation d&apos;Applications: Conception, Développement,
-                  Validation", m&apos;a permis de me spécialiser dans le
-                  développement logiciel. J&apos;ai approfondi mes compétences
-                  en développement web et ainsi découvert React qui est devenu
-                  mon framework de prédilection.
+                  {t("paragraphs.secondYear")}
                 </p>
               </div>
               <div className="relative pl-6 border-l border-border/30">
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Mon stage chez Viking Cruises à Bâle (Suisse) m&apos;a permis
-                  de travailler dans un environnement international et agile, où
-                  j&apos;ai développé une application interne avec les outils
-                  Microsoft (PowerApps, Power BI, Azure DevOps). Cette
-                  expérience très enrichissante m'a permis de développer mes
-                  compétences en gestion de projet et l'importance de la
-                  compréhension des besoins utilisateurs.
+                  {t("paragraphs.internship")}
                 </p>
               </div>
               <div className="relative pl-6 border-l border-border/30">
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  La troisième année de BUT a mis l'accent sur les pratiques et
-                  la qualité de développement, avec des cours sur le CI/CD, la
-                  virtualisation, les tests et la sécurité. J'ai également eu
-                  l'occasion de développer une application dans le cadre d'un
-                  projet conséquent dont le client était un personnel de
-                  l'Euro-Métropole de Strasbourg.
+                  {t("paragraphs.thirdYear")}
                 </p>
               </div>
             </div>
@@ -229,7 +193,7 @@ export function AboutSection() {
               <div className="flex items-center gap-4 mb-10">
                 <div className="w-8 h-px bg-primary/40" />
                 <h3 className="text-lg font-semibold text-foreground tracking-wide">
-                  Formation
+                  {t("formationTitle")}
                 </h3>
               </div>
               <div className="space-y-0">
@@ -245,25 +209,31 @@ export function AboutSection() {
           </div>
 
           {/* Info Cards - Localisation & Objectif */}
-          <div className="grid sm:grid-cols-2 gap-6 mt-16">
+          <div
+            ref={infoCardsRef}
+            className={`grid sm:grid-cols-2 gap-6 mt-16 ${infoCardsInView ? "animate-in fade-in-up delay-300" : "opacity-0"}`}
+          >
             <InfoCard
               icon={<MapPin className="h-4 w-4" />}
-              title="Localisation"
-              description="Mulhouse/Strasbourg, France. Disponible pour un stage à partir de janvier 2026"
+              title={t("infoCards.locationTitle")}
+              description={t("infoCards.locationDescription")}
             />
             <InfoCard
               icon={<Target className="h-4 w-4" />}
-              title="Objectif professionnel"
-              description="Devenir développeur Full Stack et contribuer à des projets innovants et utiles dans un environnement international"
+              title={t("infoCards.objectiveTitle")}
+              description={t("infoCards.objectiveDescription")}
             />
           </div>
 
           {/* Centres d'intérêt */}
-          <div className="mt-20">
+          <div
+            ref={interestsRef}
+            className={`mt-20 ${interestsInView ? "animate-in fade-in-up delay-200" : "opacity-0"}`}
+          >
             <div className="flex items-center justify-center gap-4 mb-10">
               <span className="h-px w-8 bg-gradient-to-r from-transparent to-primary/40" />
               <h3 className="text-sm font-medium text-foreground tracking-wider uppercase">
-                Centres d&apos;intérêt
+                {t("interests.title")}
               </h3>
               <span className="h-px w-8 bg-gradient-to-l from-transparent to-primary/40" />
             </div>
@@ -274,12 +244,10 @@ export function AboutSection() {
                   <Dumbbell className="h-5 w-5 text-primary -rotate-45" />
                 </div>
                 <h4 className="text-sm font-medium text-foreground mb-2">
-                  Sport
+                  {t("interests.sport.title")}
                 </h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Basket-ball et volley-ball à l&apos;université. Ces sports
-                  collectifs m&apos;apprennent le travail d&apos;équipe et la
-                  persévérance.
+                  {t("interests.sport.description")}
                 </p>
               </div>
 
@@ -289,11 +257,10 @@ export function AboutSection() {
                   <Swords className="h-5 w-5 text-primary -rotate-45" />
                 </div>
                 <h4 className="text-sm font-medium text-foreground mb-2">
-                  Arts martiaux
+                  {t("interests.martialArts.title")}
                 </h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Pratique du kung-fu en club depuis 8 ans. Discipline, maîtrise
-                  de soi et respect des traditions.
+                  {t("interests.martialArts.description")}
                 </p>
               </div>
 
@@ -303,12 +270,10 @@ export function AboutSection() {
                   <Pencil className="h-5 w-5 text-primary -rotate-45" />
                 </div>
                 <h4 className="text-sm font-medium text-foreground mb-2">
-                  Dessin
+                  {t("interests.drawing.title")}
                 </h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Mon échappatoire créative. J&apos;explore différents styles et
-                  techniques, ce qui nourrit ma sensibilité au design. Le style
-                  manga étant mon style principal.
+                  {t("interests.drawing.description")}
                 </p>
               </div>
             </div>

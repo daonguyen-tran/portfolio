@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useInView } from "@/hooks/useInView";
+import { useTranslations } from "next-intl";
 
 interface Project {
   title: string;
@@ -26,12 +28,10 @@ interface Project {
   liveUrl?: string;
 }
 
-const projects: Project[] = [
+// Non-translatable project data (icons, techs, links)
+const projectsData = [
   {
-    title: "StrasPlanning",
     icon: <CalendarClock className="h-4 w-4" />,
-    description:
-      "Projet de développement d'une application sécurisée de gestion et de plannification d'évènements pour l'Euro-Métropole de Strasbourg. Travail en équipe de 6 utilisant des méthodologies agiles et des outils de versioning. L'application se décline en une version desktop pour les administrateurs et une version mobile pour les agents en charge de la sécurité des lieux de l'évènements sur le terrain.",
     technologies: [
       "React",
       "Electron",
@@ -43,31 +43,19 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Application de cuisine",
     icon: <ChefHat className="h-4 w-4" />,
-    description:
-      "Application Windows Forms en C# permettant de gérer des recettes de cuisine avec une base de données locale SQLite. Fonctionnalités de recherche, ajout, modification et suppression de recettes. L'utilisateur peut sélectionner les aliments disponibles dans son frigo pour obtenir des suggestions de recettes correspondantes depuis la base de données.",
     technologies: ["C#", "WindowsForms .NET", "SQLite", "Gitlab"],
   },
   {
-    title: "Application Gallerie Photos",
     icon: <Images className="h-4 w-4" />,
-    description:
-      "Application web développée durant mon temps libre, permettant de gérer et partager des photos avec des fonctionnalités avancées de création de compte, de visualisation, de tri et de recherche.",
     technologies: ["React", "Nextjs", "Prisma", "Supabase", "Tailwind CSS"],
   },
   {
-    title: "API Java to PUML",
     icon: <Code2 className="h-4 w-4" />,
-    description:
-      "Projet académique de première année visant à développer une API capable de convertir du code Java en diagrammes UML au format PUML. Travail en binôme avec utilisation de Git pour le versioning. Ce travail a permis une meilleure compréhension du fonctionnement des classes Java.",
     technologies: ["Java", "UML", "Gitlab"],
   },
   {
-    title: "Application Web Bibliothèque",
     icon: <BookOpen className="h-4 w-4" />,
-    description:
-      "Application web de gestion de bibliothèque développée avec React Router permettant la gestion des livres, des emprunts et des utilisateurs en interrogeant une API. Ce projet académique m'a permis de renforcer mes compétences en développement web et en gestion de bases de données, tout en me faisant découvrir des bibliothèques comme lucide-react et shadcn/ui.",
     technologies: [
       "React",
       "React Router",
@@ -78,10 +66,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Application Les Bons Comptes",
     icon: <Wallet className="h-4 w-4" />,
-    description:
-      "Application Windows Forms en C# permettant de gérer les dépenses partagées entre plusieurs utilisateurs. Chaque utilisateur peut ajouter des dépenses, et l'application calcule automatiquement les montants à rembourser entre les participants.",
     technologies: ["C#", "WindowsForms .NET", "SQLite", "Gitlab"],
   },
 ];
@@ -121,7 +106,7 @@ function ProjectCard({ project }: { project: Project }) {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Voir sur GitHub"
+                  aria-label="GitHub"
                 >
                   <Github className="h-4 w-4" />
                 </a>
@@ -138,7 +123,7 @@ function ProjectCard({ project }: { project: Project }) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Voir le site"
+                  aria-label="Live"
                 >
                   <ExternalLink className="h-4 w-4" />
                 </a>
@@ -174,7 +159,16 @@ function ProjectCard({ project }: { project: Project }) {
 const PROJECTS_PER_PAGE = 4;
 
 export function ProjectsSection() {
+  const t = useTranslations("projects");
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE);
+  const { ref: headerRef, isInView: headerInView } = useInView();
+  const { ref: gridRef, isInView: gridInView } = useInView();
+
+  const projects: Project[] = projectsData.map((data, i) => ({
+    ...data,
+    title: t(`items.${i}.title`),
+    description: t(`items.${i}.description`),
+  }));
 
   const visibleProjects = projects.slice(0, visibleCount);
   const hasMoreProjects = visibleCount < projects.length;
@@ -193,21 +187,27 @@ export function ProjectsSection() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Section Header - Asian style */}
-          <div className="text-center mb-20">
+          <div
+            ref={headerRef}
+            className={`text-center mb-20 ${headerInView ? "animate-in fade-in-up" : "opacity-0"}`}
+          >
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
-                Réalisations
+                {t("sectionLabel")}
               </p>
               <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-wide ink-stroke">
-              Mes projets
+              {t("title")}
             </h2>
           </div>
 
           {/* Projects Grid - 2 per row */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div
+            ref={gridRef}
+            className={`grid md:grid-cols-2 gap-6 ${gridInView ? "animate-in fade-in-up delay-200" : "opacity-0"}`}
+          >
             {visibleProjects.map((project, index) => (
               <ProjectCard key={index} project={project} />
             ))}
@@ -221,7 +221,7 @@ export function ProjectsSection() {
                 className="rounded-none border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground px-8 py-5 tracking-wide transition-all duration-300 cursor-pointer"
                 onClick={handleLoadMore}
               >
-                Voir plus de projets
+                {t("loadMore")}
                 <ChevronDown className="ml-2 h-4 w-4" />
               </Button>
             </div>

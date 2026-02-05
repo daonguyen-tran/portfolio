@@ -1,0 +1,187 @@
+{
+  "metadata": {
+    "title": "Portfolio | Daonguyen TRAN - Étudiant BUT Informatique",
+    "description": "Portfolio personnel de 3ème année de BUT Informatique. Découvrez mes projets, compétences et parcours professionnel.",
+    "keywords": "portfolio, développeur, BUT Informatique, étudiant, web, développement"
+  },
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "hero": {
+    "welcome": "Bienvenue",
+    "role": "Étudiant en 3ème année de BUT Informatique",
+    "description": "Passionné par le développement web et les nouvelles technologies, je construis mon parcours professionnel avec curiosité et détermination.",
+    "cta": "Découvrir mon parcours",
+    "scroll": "Scroll",
+    "profileAlt": "Photo de profil de Daonguyen TRAN"
+  },
+  "about": {
+    "sectionLabel": "À propos",
+    "title": "Mon parcours",
+    "paragraphs": {
+      "intro": "Étudiant passionné en troisième année de BUT Informatique à l'IUT Robert Schuman (Illkirch-Graffenstaden), je suis à la recherche d'un stage en développement informatique pour valider mon diplôme.",
+      "firstYear": "Ma première année de BUT m'a permis d'acquérir de solides bases en informatique, couvrant des domaines tels que l'algorithmie, la programmation, les bases de données, le réseau et le développement web. D'autres matières annexes mais tout aussi importantes comme les mathématiques, la gestion de projet, l'économie et l'anglais technique ont également enrichi mon parcours. La plupart des cours ont été approfondis au fil du cursus.",
+      "secondYear": "Lors de ma deuxième année de BUT, le parcours que j'ai suivi, \"Réalisation d'Applications: Conception, Développement, Validation\", m'a permis de me spécialiser dans le développement logiciel. J'ai approfondi mes compétences en développement web et ainsi découvert React qui est devenu mon framework de prédilection.",
+      "internship": "Mon stage chez Viking Cruises à Bâle (Suisse) m'a permis de travailler dans un environnement international et agile, où j'ai développé une application interne avec les outils Microsoft (PowerApps, Power BI, Azure DevOps). Cette expérience très enrichissante m'a permis de développer mes compétences en gestion de projet et l'importance de la compréhension des besoins utilisateurs.",
+      "thirdYear": "La troisième année de BUT a mis l'accent sur les pratiques et la qualité de développement, avec des cours sur le CI/CD, la virtualisation, les tests et la sécurité. J'ai également eu l'occasion de développer une application dans le cadre d'un projet conséquent dont le client était un personnel de l'Euro-Métropole de Strasbourg."
+    },
+    "formationTitle": "Formation",
+    "formations": [
+      {
+        "period": "2025 - 2026",
+        "title": "BUT Informatique 3ème année",
+        "institution": "IUT Robert Schuman",
+        "location": "Illkirch-Graffenstaden",
+        "description": "Parcours Réalisation d'applications : conception, développement, validation"
+      },
+      {
+        "period": "2024 - 2025",
+        "title": "BUT Informatique 2ème année",
+        "institution": "IUT Robert Schuman",
+        "location": "Illkirch-Graffenstaden",
+        "description": "Parcours Réalisation d'applications : conception, développement, validation",
+        "secondLine": "Stage de fin d'année chez Viking Cruises (Bâle, Suisse) : développement d'une application interne avec PowerApps et Power BI",
+        "highlight": "DUT obtenu"
+      },
+      {
+        "period": "2022 - 2024",
+        "title": "BUT Informatique 1ère année",
+        "institution": "IUT Robert Schuman",
+        "location": "Illkirch-Graffenstaden",
+        "description": "Tronc commun : bases de l'informatique, algorithmie, programmation, développement"
+      },
+      {
+        "period": "2018 - 2022",
+        "title": "Baccalauréat général",
+        "institution": "Lycée Jean-Henri Lambert",
+        "location": "Mulhouse",
+        "description": "Filière générale",
+        "secondLine": "Spécialités Mathématiques & LLCER Anglais | Option Maths expertes",
+        "highlight": "Mention Bien"
+      }
+    ],
+    "infoCards": {
+      "locationTitle": "Localisation",
+      "locationDescription": "Mulhouse/Strasbourg, France. Disponible pour un stage à partir de janvier 2026",
+      "objectiveTitle": "Objectif professionnel",
+      "objectiveDescription": "Devenir développeur Full Stack et contribuer à des projets innovants et utiles dans un environnement international"
+    },
+    "interests": {
+      "title": "Centres d'intérêt",
+      "sport": {
+        "title": "Sport",
+        "description": "Basket-ball et volley-ball à l'université. Ces sports collectifs m'apprennent le travail d'équipe et la persévérance."
+      },
+      "martialArts": {
+        "title": "Arts martiaux",
+        "description": "Pratique du kung-fu en club depuis 8 ans. Discipline, maîtrise de soi et respect des traditions."
+      },
+      "drawing": {
+        "title": "Dessin",
+        "description": "Mon échappatoire créative. J'explore différents styles et techniques, ce qui nourrit ma sensibilité au design. Le style manga étant mon style principal."
+      }
+    }
+  },
+  "skills": {
+    "sectionLabel": "Savoir-faire",
+    "title": "Compétences",
+    "technologiesLabel": "Technologies",
+    "softSkillsLabel": "Compétences transversales",
+    "softSkills": {
+      "languages": {
+        "title": "Langues",
+        "items": [
+          "Français (courant)",
+          "Vietnamien (bilingue)",
+          "Anglais (B2)",
+          "Allemand (A2-B1)"
+        ]
+      },
+      "teamwork": {
+        "title": "Travail d'équipe",
+        "items": [
+          "Collaboration",
+          "Communication",
+          "Méthodologie Agile",
+          "Esprit d'équipe"
+        ]
+      },
+      "learning": {
+        "title": "Apprentissage",
+        "items": [
+          "Curiosité",
+          "Rigueur",
+          "Auto-formation",
+          "Veille technologique"
+        ]
+      },
+      "problemSolving": {
+        "title": "Résolution de problèmes",
+        "items": ["Adaptation", "Capacité d'analyse", "Autonomie"]
+      }
+    }
+  },
+  "projects": {
+    "sectionLabel": "Réalisations",
+    "title": "Mes projets",
+    "loadMore": "Voir plus de projets",
+    "viewOnGithub": "Voir sur GitHub",
+    "viewSite": "Voir le site",
+    "items": [
+      {
+        "title": "StrasPlanning",
+        "description": "Projet de développement d'une application sécurisée de gestion et de plannification d'évènements pour l'Euro-Métropole de Strasbourg. Travail en équipe de 6 utilisant des méthodologies agiles et des outils de versioning. L'application se décline en une version desktop pour les administrateurs et une version mobile pour les agents en charge de la sécurité des lieux de l'évènements sur le terrain."
+      },
+      {
+        "title": "Application de cuisine",
+        "description": "Application Windows Forms en C# permettant de gérer des recettes de cuisine avec une base de données locale SQLite. Fonctionnalités de recherche, ajout, modification et suppression de recettes. L'utilisateur peut sélectionner les aliments disponibles dans son frigo pour obtenir des suggestions de recettes correspondantes depuis la base de données."
+      },
+      {
+        "title": "Application Gallerie Photos",
+        "description": "Application web développée durant mon temps libre, permettant de gérer et partager des photos avec des fonctionnalités avancées de création de compte, de visualisation, de tri et de recherche."
+      },
+      {
+        "title": "API Java to PUML",
+        "description": "Projet académique de première année visant à développer une API capable de convertir du code Java en diagrammes UML au format PUML. Travail en binôme avec utilisation de Git pour le versioning. Ce travail a permis une meilleure compréhension du fonctionnement des classes Java."
+      },
+      {
+        "title": "Application Web Bibliothèque",
+        "description": "Application web de gestion de bibliothèque développée avec React Router permettant la gestion des livres, des emprunts et des utilisateurs en interrogeant une API. Ce projet académique m'a permis de renforcer mes compétences en développement web et en gestion de bases de données, tout en me faisant découvrir des bibliothèques comme lucide-react et shadcn/ui."
+      },
+      {
+        "title": "Application Les Bons Comptes",
+        "description": "Application Windows Forms en C# permettant de gérer les dépenses partagées entre plusieurs utilisateurs. Chaque utilisateur peut ajouter des dépenses, et l'application calcule automatiquement les montants à rembourser entre les participants."
+      }
+    ]
+  },
+  "contact": {
+    "sectionLabel": "Contact",
+    "title": "Me contacter",
+    "intro": "N'hésitez pas à me contacter pour toute question, opportunité de stage ou simplement pour échanger. Je suis toujours ouvert aux nouvelles rencontres et collaborations.",
+    "email": "Email",
+    "location": "Localisation",
+    "locationValue": "Mulhouse/Strasbourg, France",
+    "findMe": "Retrouvez-moi sur",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "votre@email.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Objet de votre message",
+      "message": "Message",
+      "messagePlaceholder": "Votre message...",
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours...",
+      "success": "Message envoyé avec succès !"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Portfolio"
+  }
+}

@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { Menu, X, User, FolderGit2, Mail, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { useLocale } from "@/contexts/locale-provider";
+import { locales, localeLabels, type Locale } from "@/i18n/config";
 
 interface NavLink {
   label: string;
@@ -11,20 +14,93 @@ interface NavLink {
   icon: React.ReactNode;
 }
 
-const navLinks: NavLink[] = [
-  { label: "Accueil", href: "#home", icon: <Home className="h-4 w-4" /> },
-  { label: "À propos", href: "#about", icon: <User className="h-4 w-4" /> },
-  {
-    label: "Projets",
-    href: "#projects",
-    icon: <FolderGit2 className="h-4 w-4" />,
-  },
-  { label: "Contact", href: "#contact", icon: <Mail className="h-4 w-4" /> },
-];
+interface LanguageSwitcherProps {
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
+}
+
+function FrenchFlag() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      className="rounded-full"
+    >
+      <clipPath id="fr-clip">
+        <circle cx="10" cy="10" r="10" />
+      </clipPath>
+      <g clipPath="url(#fr-clip)">
+        <rect x="0" y="0" width="7" height="20" fill="#002395" />
+        <rect x="7" y="0" width="6" height="20" fill="#FFFFFF" />
+        <rect x="13" y="0" width="7" height="20" fill="#ED2939" />
+      </g>
+    </svg>
+  );
+}
+
+function BritishFlag() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 60 60"
+      className="rounded-full"
+    >
+      <clipPath id="gb-clip">
+        <circle cx="30" cy="30" r="30" />
+      </clipPath>
+      <g clipPath="url(#gb-clip)">
+        <rect width="60" height="60" fill="#012169" />
+        <path d="M0,0 L60,60 M60,0 L0,60" stroke="#FFFFFF" strokeWidth="10" />
+        <path d="M0,0 L60,60 M60,0 L0,60" stroke="#C8102E" strokeWidth="6" />
+        <path d="M30,0 V60 M0,30 H60" stroke="#FFFFFF" strokeWidth="12" />
+        <path d="M30,0 V60 M0,30 H60" stroke="#C8102E" strokeWidth="7" />
+      </g>
+    </svg>
+  );
+}
+
+const flagComponents: Record<Locale, React.ReactNode> = {
+  fr: <FrenchFlag />,
+  en: <BritishFlag />,
+};
+
+function LanguageSwitcher({ locale, setLocale }: LanguageSwitcherProps) {
+  const nextLocale = locales.find((l) => l !== locale) ?? locales[0];
+
+  return (
+    <button
+      onClick={() => setLocale(nextLocale)}
+      className="flex items-center gap-1.5 px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors tracking-wide cursor-pointer"
+      aria-label={`Switch to ${localeLabels[nextLocale]}`}
+    >
+      {flagComponents[locale]}
+      <span className="text-xs font-medium">{localeLabels[locale]}</span>
+    </button>
+  );
+}
 
 export function Navbar() {
+  const t = useTranslations("navbar");
+  const { locale, setLocale } = useLocale();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks: NavLink[] = [
+    { label: t("home"), href: "#home", icon: <Home className="h-4 w-4" /> },
+    { label: t("about"), href: "#about", icon: <User className="h-4 w-4" /> },
+    {
+      label: t("projects"),
+      href: "#projects",
+      icon: <FolderGit2 className="h-4 w-4" />,
+    },
+    {
+      label: t("contact"),
+      href: "#contact",
+      icon: <Mail className="h-4 w-4" />,
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,22 +164,29 @@ export function Navbar() {
                 )}
               </div>
             ))}
+
+            {/* Language Switcher */}
+            <span className="h-4 w-px bg-border/50 mx-1" />
+            <LanguageSwitcher locale={locale} setLocale={setLocale} />
           </div>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </Button>
+          <div className="flex items-center gap-2 md:hidden">
+            <LanguageSwitcher locale={locale} setLocale={setLocale} />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? t("closeMenu") : t("openMenu")}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
