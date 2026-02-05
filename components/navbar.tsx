@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, User, FolderGit2, Mail, Home, Flag } from "lucide-react";
+import { Menu, X, User, FolderGit2, Mail, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -19,6 +19,53 @@ interface LanguageSwitcherProps {
   setLocale: (locale: Locale) => void;
 }
 
+function FrenchFlag() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      className="rounded-full"
+    >
+      <clipPath id="fr-clip">
+        <circle cx="10" cy="10" r="10" />
+      </clipPath>
+      <g clipPath="url(#fr-clip)">
+        <rect x="0" y="0" width="7" height="20" fill="#002395" />
+        <rect x="7" y="0" width="6" height="20" fill="#FFFFFF" />
+        <rect x="13" y="0" width="7" height="20" fill="#ED2939" />
+      </g>
+    </svg>
+  );
+}
+
+function BritishFlag() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 60 60"
+      className="rounded-full"
+    >
+      <clipPath id="gb-clip">
+        <circle cx="30" cy="30" r="30" />
+      </clipPath>
+      <g clipPath="url(#gb-clip)">
+        <rect width="60" height="60" fill="#012169" />
+        <path d="M0,0 L60,60 M60,0 L0,60" stroke="#FFFFFF" strokeWidth="10" />
+        <path d="M0,0 L60,60 M60,0 L0,60" stroke="#C8102E" strokeWidth="6" />
+        <path d="M30,0 V60 M0,30 H60" stroke="#FFFFFF" strokeWidth="12" />
+        <path d="M30,0 V60 M0,30 H60" stroke="#C8102E" strokeWidth="7" />
+      </g>
+    </svg>
+  );
+}
+
+const flagComponents: Record<Locale, React.ReactNode> = {
+  fr: <FrenchFlag />,
+  en: <BritishFlag />,
+};
+
 function LanguageSwitcher({ locale, setLocale }: LanguageSwitcherProps) {
   const nextLocale = locales.find((l) => l !== locale) ?? locales[0];
 
@@ -28,7 +75,7 @@ function LanguageSwitcher({ locale, setLocale }: LanguageSwitcherProps) {
       className="flex items-center gap-1.5 px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors tracking-wide cursor-pointer"
       aria-label={`Switch to ${localeLabels[nextLocale]}`}
     >
-      <Flag className="h-4 w-4" />
+      {flagComponents[locale]}
       <span className="text-xs font-medium">{localeLabels[locale]}</span>
     </button>
   );
