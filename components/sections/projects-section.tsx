@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useInView } from "@/hooks/useInView";
 
 interface Project {
   title: string;
@@ -175,6 +176,8 @@ const PROJECTS_PER_PAGE = 4;
 
 export function ProjectsSection() {
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE);
+  const { ref: headerRef, isInView: headerInView } = useInView();
+  const { ref: gridRef, isInView: gridInView } = useInView();
 
   const visibleProjects = projects.slice(0, visibleCount);
   const hasMoreProjects = visibleCount < projects.length;
@@ -193,7 +196,10 @@ export function ProjectsSection() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Section Header - Asian style */}
-          <div className="text-center mb-20">
+          <div
+            ref={headerRef}
+            className={`text-center mb-20 ${headerInView ? "animate-in fade-in-up" : "opacity-0"}`}
+          >
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
@@ -207,7 +213,10 @@ export function ProjectsSection() {
           </div>
 
           {/* Projects Grid - 2 per row */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div
+            ref={gridRef}
+            className={`grid md:grid-cols-2 gap-6 ${gridInView ? "animate-in fade-in-up delay-200" : "opacity-0"}`}
+          >
             {visibleProjects.map((project, index) => (
               <ProjectCard key={index} project={project} />
             ))}

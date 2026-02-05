@@ -1,3 +1,5 @@
+"use client";
+
 import {
   GraduationCap,
   Target,
@@ -11,6 +13,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
+import { useInView } from "@/hooks/useInView";
 
 interface Formation {
   period: string;
@@ -146,6 +149,9 @@ function InfoCard({ icon, title, description }: InfoCardProps) {
 }
 
 export function AboutSection() {
+  const { ref: headerRef, isInView: headerInView } = useInView();
+  const { ref: contentRef, isInView: contentInView } = useInView();
+
   return (
     <section id="about" className="py-24 relative">
       {/* Subtle background */}
@@ -154,7 +160,10 @@ export function AboutSection() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Section Header - Asian style */}
-          <div className="text-center mb-20">
+          <div
+            ref={headerRef}
+            className={`text-center mb-20 ${headerInView ? "animate-in fade-in-up" : "opacity-0"}`}
+          >
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
@@ -168,7 +177,10 @@ export function AboutSection() {
           </div>
 
           {/* Content */}
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div
+            ref={contentRef}
+            className={`grid lg:grid-cols-2 gap-16 items-start ${contentInView ? "animate-in fade-in-up delay-200" : "opacity-0"}`}
+          >
             {/* Text Content */}
             <div className="space-y-6">
               <div className="relative pl-6 border-l border-primary/30">

@@ -3,8 +3,15 @@
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useInView } from "@/hooks/useInView";
 
 export function HeroSection() {
+  const { ref: leftRef, isInView: leftInView } = useInView({ threshold: 0.2 });
+  const { ref: rightRef, isInView: rightInView } = useInView({
+    threshold: 0.2,
+  });
+  const { ref: ctaRef, isInView: ctaInView } = useInView({ threshold: 0.2 });
+
   const handleScrollToAbout = () => {
     const element = document.querySelector("#about");
     if (element) {
@@ -31,7 +38,10 @@ export function HeroSection() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
           {/* Left side - Content */}
-          <div className="flex-1 text-center lg:text-left space-y-6 max-w-xl">
+          <div
+            ref={leftRef}
+            className={`flex-1 text-center lg:text-left space-y-6 max-w-xl ${leftInView ? "animate-in fade-in-up" : "opacity-0"}`}
+          >
             {/* Greeting with decorative element */}
             <div className="flex items-center justify-center lg:justify-start gap-4">
               <span className="h-px w-8 bg-gradient-to-r from-transparent to-primary/60" />
@@ -115,7 +125,10 @@ export function HeroSection() {
           </div>
 
           {/* Right side - Profile Image */}
-          <div className="flex-shrink-0 order-first lg:order-last mt-20 lg:mt-0">
+          <div
+            ref={rightRef}
+            className={`flex-shrink-0 order-first lg:order-last mt-20 lg:mt-0 ${rightInView ? "animate-in fade-in-up delay-200" : "opacity-0"}`}
+          >
             <div className="relative">
               {/* Decorative frame */}
               <div className="absolute -inset-3 border border-primary/20" />
@@ -147,7 +160,10 @@ export function HeroSection() {
         </div>
 
         {/* CTA Button - centered below the content */}
-        <div className="mt-12 flex justify-center w-full">
+        <div
+          ref={ctaRef}
+          className={`mt-12 flex justify-center w-full ${ctaInView ? "animate-in fade-in-up delay-300" : "opacity-0"}`}
+        >
           <Button
             variant="outline"
             size="lg"

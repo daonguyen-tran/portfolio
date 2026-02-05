@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { Globe, Users, Lightbulb, Puzzle, Languages } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useInView } from "@/hooks/useInView";
 
 interface Skill {
   name: string;
@@ -170,6 +171,9 @@ function SoftSkillCard({ softSkill }: { softSkill: SoftSkill }) {
 
 export function SkillsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { ref: headerRef, isInView: headerInView } = useInView();
+  const { ref: carouselRef, isInView: carouselInView } = useInView();
+  const { ref: softSkillsRef, isInView: softSkillsInView } = useInView();
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -197,7 +201,10 @@ export function SkillsSection() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Section Header - Asian style */}
-          <div className="text-center mb-20">
+          <div
+            ref={headerRef}
+            className={`text-center mb-20 ${headerInView ? "animate-in fade-in-up" : "opacity-0"}`}
+          >
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
@@ -211,7 +218,10 @@ export function SkillsSection() {
           </div>
 
           {/* Technical Skills Carousel */}
-          <div className="mb-12">
+          <div
+            ref={carouselRef}
+            className={`mb-12 ${carouselInView ? "animate-in fade-in delay-200" : "opacity-0"}`}
+          >
             <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
               Technologies
             </p>
@@ -232,7 +242,12 @@ export function SkillsSection() {
           </div>
 
           {/* Soft Skills Grid */}
-          <div>
+          <div
+            ref={softSkillsRef}
+            className={
+              softSkillsInView ? "animate-in fade-in-up delay-300" : "opacity-0"
+            }
+          >
             <p className="text-xs font-medium text-muted-foreground tracking-widest uppercase mb-6">
               Compétences transversales
             </p>

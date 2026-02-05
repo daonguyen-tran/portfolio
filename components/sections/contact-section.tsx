@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Mail, MapPin, Send, Github, Linkedin, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useInView } from "@/hooks/useInView";
 
 interface ContactInfo {
   icon: React.ReactNode;
@@ -48,6 +49,10 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const { ref: headerRef, isInView: headerInView } = useInView();
+  const { ref: leftRef, isInView: leftInView } = useInView();
+  const { ref: rightRef, isInView: rightInView } = useInView();
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -80,7 +85,10 @@ export function ContactSection() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Section Header - Asian style */}
-          <div className="text-center mb-20">
+          <div
+            ref={headerRef}
+            className={`text-center mb-20 ${headerInView ? "animate-in fade-in-up" : "opacity-0"}`}
+          >
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
               <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase">
@@ -95,7 +103,10 @@ export function ContactSection() {
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left side - Contact Info */}
-            <div className="space-y-8">
+            <div
+              ref={leftRef}
+              className={`space-y-8 ${leftInView ? "animate-in fade-in-up delay-200" : "opacity-0"}`}
+            >
               <div className="relative pl-6 border-l border-primary/30">
                 <p className="text-muted-foreground leading-relaxed text-sm">
                   N&apos;hésitez pas à me contacter pour toute question,
@@ -161,7 +172,10 @@ export function ContactSection() {
             </div>
 
             {/* Right side - Contact Form */}
-            <div className="relative">
+            <div
+              ref={rightRef}
+              className={`relative ${rightInView ? "animate-in fade-in-up delay-300" : "opacity-0"}`}
+            >
               {/* Corner decorations */}
               <div className="absolute -top-4 -left-4 w-6 h-6 border-t-2 border-l-2 border-primary/40" />
               <div className="absolute -top-4 -right-4 w-6 h-6 border-t-2 border-r-2 border-primary/40" />
